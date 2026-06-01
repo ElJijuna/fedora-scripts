@@ -1,36 +1,53 @@
 # fedora-scripts
 
-Scripts instalables desde GitHub para Fedora y Linux de escritorio.
+Installable Linux scripts distributed through GitHub raw URLs.
 
-## Herramientas
+## Installation
 
-### webm2gif
-
-Convierte videos `.webm` a `.gif` usando `ffmpeg`.
-
-Instalacion desde la URL raw de GitHub:
+Install all available tools:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ElJijuna/fedora-scripts/main/install.sh | bash
 ```
 
-Tambien puedes instalar solo esta herramienta:
+Install only `webm2gif`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ElJijuna/fedora-scripts/main/install.sh | bash -s -- webm2gif
 ```
 
-Si falta `ffmpeg`, el script intentara instalarlo con `sudo dnf install -y ffmpeg`.
-Tambien puedes instalarlo manualmente:
+By default, commands are installed in `~/.local/bin` and shared files are installed in `~/.local/share/fedora-scripts`.
 
-```bash
-sudo dnf install ffmpeg
-```
+## Tools
 
-Uso:
+### webm2gif
+
+Converts `.webm` videos to `.gif` using `ffmpeg`.
+
+Usage:
 
 ```bash
 webm2gif video.webm
 ```
 
-Esto crea `video.gif` junto al archivo original.
+This creates `video.gif` next to the original file.
+
+If `ffmpeg` is missing, `webm2gif` will try to install it automatically on Fedora:
+
+```bash
+sudo dnf install -y ffmpeg
+```
+
+## Uninstall
+
+Remove all installed tools and shared files:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ElJijuna/fedora-scripts/main/uninstall.sh | bash
+```
+
+Remove only `webm2gif`:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ElJijuna/fedora-scripts/main/uninstall.sh | bash -s -- webm2gif
+```

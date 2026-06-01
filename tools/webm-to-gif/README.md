@@ -1,26 +1,32 @@
 # webm2gif
 
-Convierte archivos `.webm` a `.gif` desde terminal.
+Convert `.webm` files to `.gif` from the terminal.
 
-## Instalacion
+## Install
 
-Instala el comando `webm2gif` en `~/.local/bin`:
+Install the `webm2gif` command in `~/.local/bin`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ElJijuna/fedora-scripts/main/install.sh | bash -s -- webm2gif
 ```
 
-Si falta `ffmpeg`, el script intentara instalarlo con `sudo dnf install -y ffmpeg`.
-Tambien puedes instalarlo manualmente:
+If `ffmpeg` is missing, the script will try to install it automatically on Fedora.
+You can also install it manually:
 
 ```bash
-sudo dnf install ffmpeg
+sudo dnf install -y ffmpeg
 ```
 
-## Uso
+## Usage
 
 ```bash
 webm2gif video.webm
 ```
 
-Esto crea `video.gif` en el mismo directorio.
+This creates `video.gif` in the same directory.
+
+## Uninstall
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ElJijuna/fedora-scripts/main/uninstall.sh | bash -s -- webm2gif
+```
