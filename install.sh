@@ -3,6 +3,7 @@ set -euo pipefail
 
 REPO_RAW_URL="${REPO_RAW_URL:-https://raw.githubusercontent.com/ElJijuna/fedora-scripts/main}"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.local/bin}"
+SHARE_DIR="${SHARE_DIR:-$HOME/.local/share/fedora-scripts}"
 
 usage() {
   cat <<'USAGE'
@@ -48,7 +49,18 @@ install_script() {
   printf 'Installed %s at %s\n' "$command_name" "$target"
 }
 
+install_lib() {
+  local source_path="$1"
+  local target="$SHARE_DIR/$source_path"
+
+  mkdir -p "$(dirname "$target")"
+  download "$REPO_RAW_URL/$source_path" "$target"
+
+  printf 'Installed %s at %s\n' "$source_path" "$target"
+}
+
 install_webm2gif() {
+  install_lib "lib/logger.sh"
   install_script "tools/webm-to-gif/webm-to-gif.sh" "webm2gif"
 
   if ! command -v ffmpeg >/dev/null 2>&1; then

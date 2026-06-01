@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m'
+if [[ -t 1 || -t 2 ]] && [[ -z "${NO_COLOR:-}" ]]; then
+  RED='\033[0;31m'
+  GREEN='\033[0;32m'
+  YELLOW='\033[1;33m'
+  BLUE='\033[0;34m'
+  NC='\033[0m'
+else
+  RED=''
+  GREEN=''
+  YELLOW=''
+  BLUE=''
+  NC=''
+fi
 
 log_info() {
   printf "${BLUE}[INFO]${NC} %s\n" "$*"
